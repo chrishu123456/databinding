@@ -16,6 +16,21 @@
             <TextBox Name="grootteTextBox" Style="{StaticResource baseControlStijl}" Width="30" HorizontalAlignment="Left" Text="{Binding ElementName=grootteSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" ></TextBox>
             <Slider Name="grootteSlider" Style="{StaticResource baseControlStijl}" Width="200" Minimum="1" Maximum="96" IsSnapToTickEnabled="True" SmallChange="1" Value="12"></Slider>
         </StackPanel>
-        <TextBlock Margin="10" Text="Tekst" FontSize="{Binding ElementName=grootteSlider, Path=Value}"></TextBlock>
+        <TextBlock Margin="10" Text="Tekst" FontSize="{Binding ElementName=grootteSlider, Path=Value}" FontFamily="{Binding ElementName=lettertypeComboBox, Path=SelectedValue}"></TextBlock>
+        <ComboBox Name="lettertypeComboBox" Width="180" Style="{StaticResource baseControlStijl}" ItemsSource="{Binding}" DataContext="{x:Static Member=Fonts.SystemFontFamilies}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontFamily="{Binding}" Text="{Binding}"></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <StackPanel Name="Veranderpanel" Orientation="Horizontal" Margin="10">
+            <TextBox Name="box" Width="100" Text="{Binding Path=Naam}"></TextBox>
+            <Button Name="veranderbutton" Content="verander" Margin="10" Click="veranderbutton_Click"></Button>
+            <Button Name="toonnaambutton" Content="toon naam" Margin="10" Click="toonnaambutton_Click"></Button>
+            <TextBox Name="Weddebox" Text="{Binding Path=Wedde}" Width="100"></TextBox>
+            <TextBox Name="Indienstbox" Text="{Binding Path=InDienst}" Width="100"></TextBox>
+        </StackPanel>
     </StackPanel>
+    
 </Window>

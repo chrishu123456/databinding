@@ -20,9 +20,29 @@ namespace DataBinding
     /// </summary>
     public partial class DataBindingWindow : Window
     {
+        public databinding.Persoon persoon = new databinding.Persoon("chris",4345, new DateTime(2015,10,5));
+
         public DataBindingWindow()
         {
             InitializeComponent();
+
+            SortDescription sd = new SortDescription("Source",ListSortDirection.Ascending);
+            lettertypeComboBox.Items.SortDescriptions.Add(sd);
+            lettertypeComboBox.SelectedItem = new FontFamily("Arial");
+            Veranderpanel.DataContext = persoon;
+        }
+
+
+        private void toonnaambutton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(persoon.Naam);
+        }
+
+        private void veranderbutton_Click(object sender, RoutedEventArgs e)
+        {
+            persoon.Naam = "piet";
+            persoon.Wedde = 3424.5m;
+            persoon.InDienst = new DateTime(2016, 8, 5);
         }
     }
 }
